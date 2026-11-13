@@ -1,0 +1,47 @@
+
+// ========================================
+// COLOR PALETTE
+// ========================================
+
+$color-black: #080908;
+$color-sage: #A5A79B;
+$color-cream: #E8D2B5;
+$color-wine: #590907;
+$color-white: #F3F3EF;
+
+// ========================================
+// SPACING
+// ========================================
+
+$spacing-xs: 0.5rem;
+$spacing-sm: 1rem;
+$spacing-md: 1.5rem;
+$spacing-lg: 2rem;
+$spacing-xl: 3rem;
+$spacing-2xl: 4rem;
+$spacing-3xl: 6rem;
+
+// ========================================
+// LAYOUT
+// ========================================
+
+$container-max-width: 1200px;
+$header-height: 80px;
+$section-spacing: 120px;
+
+// ========================================
+// BORDER RADIUS
+// ========================================
+
+$radius-sm: 4px;
+$radius-md: 8px;
+$radius-lg: 16px;
+$radius-full: 999px;
+
+// ========================================
+// TRANSITIONS
+// ========================================
+
+$transition-fast: 150ms ease;
+$transition-normal: 300ms ease;
+$transition-slow: 500ms ease;

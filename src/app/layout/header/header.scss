@@ -1,0 +1,264 @@
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+
+  background: transparent;
+  border-bottom: 1px solid transparent;
+
+  transition:
+    background-color 300ms ease,
+    border-color 300ms ease;
+
+  &__container {
+    width: min(100% - 3rem, 1200px);
+    min-height: 80px;
+    margin-inline: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    flex-shrink: 0;
+  }
+
+  &__logo-mark {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    letter-spacing: -0.08em;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: clamp(1rem, 2vw, 2rem);
+  }
+
+  &__link {
+    position: relative;
+    padding-block: 0.5rem;
+
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+
+    transition: color 200ms ease;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+
+      width: 0;
+      height: 1px;
+
+      background: var(--color-secondary);
+      transition: width 250ms ease;
+    }
+
+    &:hover {
+      color: var(--color-secondary);
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+  }
+
+  &__theme {
+    width: 40px;
+    height: 40px;
+
+    display: grid;
+    place-items: center;
+
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+
+    background: transparent;
+    color: var(--color-text);
+
+    font-size: 1.3rem;
+
+    transition:
+      transform 200ms ease,
+      border-color 200ms ease,
+      color 200ms ease;
+
+    &:hover {
+      border-color: var(--color-secondary);
+      color: var(--color-secondary);
+      transform: rotate(15deg);
+    }
+  }
+
+  &__menu-toggle {
+    display: none;
+
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+
+    background: transparent;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    span {
+      width: 16px;
+      height: 1.5px;
+
+      background: var(--color-text);
+      border-radius: 2px;
+
+      transition:
+        transform 250ms ease,
+        opacity 200ms ease;
+    }
+
+    span:nth-child(1).active {
+      transform: translateY(6.5px) rotate(45deg);
+    }
+
+    span:nth-child(2).active {
+      opacity: 0;
+    }
+
+    span:nth-child(3).active {
+      transform: translateY(-6.5px) rotate(-45deg);
+    }
+  }
+
+  &__mobile-nav {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .header {
+    &__container {
+      width: calc(100% - 2rem);
+      gap: 1rem;
+    }
+
+    &__nav {
+      gap: 1rem;
+    }
+
+    &__link {
+      font-size: 0.75rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    background: var(--color-background);
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    left: auto;
+
+    &__container {
+      min-height: 70px;
+      width: calc(100% - 2rem);
+    }
+
+    &__nav {
+      display: none;
+    }
+
+    &__menu-toggle {
+      display: flex;
+    }
+
+    &__mobile-nav {
+      position: absolute;
+      top: 100%;
+      left: 0;
+
+      width: 100%;
+      padding: 0 1.5rem;
+
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+
+      background: var(--color-surface);
+      border-bottom: 1px solid var(--color-border);
+
+      box-shadow: 0 18px 35px rgba(0, 0, 0, 0.18);
+
+      visibility: hidden;
+      opacity: 0;
+      pointer-events: none;
+
+      transform: translateY(-10px);
+
+      transition:
+        opacity 250ms ease,
+        transform 250ms ease,
+        visibility 250ms ease;
+
+      a {
+        padding: 1rem 0;
+
+        border-bottom: 1px solid var(--color-border);
+
+        font-size: 0.95rem;
+        color: var(--color-text);
+
+        transition: color 200ms ease;
+
+        &:hover {
+          color: var(--color-secondary);
+        }
+      }
+
+      &--open {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+    }
+
+    &__mobile-caption {
+      padding-block: 1.5rem;
+
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+
+      color: var(--color-text-muted);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header,
+  .header * {
+    transition-duration: 0.01ms !important;
+  }
+}

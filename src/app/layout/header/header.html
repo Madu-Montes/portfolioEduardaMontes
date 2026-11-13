@@ -1,0 +1,94 @@
+<header class="header">
+
+  <div class="header__container">
+
+    <a
+      href="#inicio"
+      class="header__logo"
+      aria-label="Eduarda Montes - Página inicial"
+      (click)="closeMenu()"
+    >
+      <span class="header__logo-mark">EM.</span>
+    </a>
+
+    <nav class="header__nav" aria-label="Navegação principal">
+
+      <a href="#inicio" class="header__link" (click)="closeMenu()">
+        Home
+      </a>
+
+      <a href="#sobre" class="header__link" (click)="closeMenu()">
+        Sobre
+      </a>
+
+      <a href="#habilidades" class="header__link" (click)="closeMenu()">
+        Habilidades
+      </a>
+
+      <a href="#projetos" class="header__link" (click)="closeMenu()">
+        Projetos
+      </a>
+
+      <a href="#contato" class="header__link" (click)="closeMenu()">
+        Contato
+      </a>
+
+    </nav>
+
+    <div class="header__actions">
+
+      <button
+        class="header__theme"
+        type="button"
+        (click)="toggleTheme()"
+        [attr.aria-label]="themeService.isDark() ? 'Ativar tema claro' : 'Ativar tema escuro'"
+        title="Alternar tema"
+      >
+        @if (themeService.isDark()) {
+          <span aria-hidden="true">☼</span>
+        } @else {
+          <span aria-hidden="true">☾</span>
+        }
+      </button>
+
+      <button
+        class="header__menu-toggle"
+        type="button"
+        (click)="toggleMenu()"
+        [attr.aria-expanded]="isMenuOpen()"
+        aria-controls="mobile-navigation"
+        [attr.aria-label]="isMenuOpen() ? 'Fechar menu' : 'Abrir menu'"
+      >
+
+        <span [class.active]="isMenuOpen()"></span>
+        <span [class.active]="isMenuOpen()"></span>
+        <span [class.active]="isMenuOpen()"></span>
+
+      </button>
+
+    </div>
+
+  </div>
+
+  <nav
+    id="mobile-navigation"
+    class="header__mobile-nav"
+    [class.header__mobile-nav--open]="isMenuOpen()"
+    [attr.aria-hidden]="!isMenuOpen()"
+    [inert]="!isMenuOpen()"
+    aria-label="Navegação mobile"
+  >
+
+    <a href="#inicio" (click)="closeMenu()">Home</a>
+    <a href="#sobre" (click)="closeMenu()">Sobre</a>
+    <a href="#habilidades" (click)="closeMenu()">Habilidades</a>
+    <a href="#projetos" (click)="closeMenu()">Projetos</a>
+    <a href="#contato" (click)="closeMenu()">Contato</a>
+
+    <span class="header__mobile-caption">
+      EDUARDA MONTES · PORTFOLIO
+    </span>
+
+  </nav>
+
+</header>

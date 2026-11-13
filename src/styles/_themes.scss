@@ -1,0 +1,41 @@
+
+@use './variables' as v;
+
+// ========================================
+// DARK THEME
+// ========================================
+
+:root,
+[data-theme='dark'] {
+  color-scheme: dark;
+
+  --color-background: #{v.$color-black};
+  --color-surface: #151713;
+  --color-text: #{v.$color-white};
+  --color-text-muted: #{v.$color-sage};
+
+  --color-primary: #{v.$color-cream};
+  --color-secondary: #{v.$color-sage};
+  --color-accent: #{v.$color-wine};
+
+  --color-border: #34362F;
+}
+
+// ========================================
+// LIGHT THEME
+// ========================================
+
+[data-theme='light'] {
+  color-scheme: light;
+
+  --color-background: #{v.$color-white};
+  --color-surface: #{v.$color-cream};
+  --color-text: #{v.$color-black};
+  --color-text-muted: #65675E;
+
+  --color-primary: #{v.$color-wine};
+  --color-secondary: #{v.$color-sage};
+  --color-accent: #{v.$color-wine};
+
+  --color-border: #D4C8B7;
+}
